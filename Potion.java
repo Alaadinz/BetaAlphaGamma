@@ -5,14 +5,14 @@ public class Potion extends Item {
 	public Potion() {
 	}
 		
+	//	@Override
+		//public boolean interactionPossible(Personnage Zoe) {
+		//	return true;
+		//	}
+	
+
+
 		
-		public boolean interactionPossible() {
-			return true;
-			}
-		
-		public void interragir(Zoe zoe) {
-			Zoe.setHP(fillHP);
-		}
 		
 
 		

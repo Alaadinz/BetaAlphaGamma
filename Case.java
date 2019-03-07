@@ -2,7 +2,8 @@ package legendOfZoe;
 
 public abstract class Case {
 	protected String representation;
-	//protected Point position;
+	protected Point position;
+	
 	
 	public String getRepresentation() {
 		return representation;
@@ -10,11 +11,11 @@ public abstract class Case {
 	
 	// Methode qui defenit si une interraction entre Zoe et la case est possible
 	// ==> TODO(possibleemnt entre Monstre vivant et Zoe aussi
-	public abstract boolean interactionPossible();
+	public abstract boolean interactionPossible(Zoe zoe);
 	
 	
 	//Interaction entre Personnage et la case
-	public abstract void interagir();
+	public abstract void interagir(Zoe zoe);
 	
 	
 

@@ -3,7 +3,7 @@ package legendOfZoe;
 public class Item extends Case {
 	
 	public Item() {
-		this.representation = representation;
+		//this.representation = representation;
 		// "$" tresor ferme
 		// "_" Tresor ouvert
 		// 
@@ -14,14 +14,14 @@ public class Item extends Case {
 	
 	}
 
-	public boolean interactionPossible() {
+	public boolean interactionPossible(Zoe zoe) {
 		return true;
 	}
 	
 	
 
 	@Override
-	public void interagir() {
+	public void interagir(Zoe zoe) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,25 +1,32 @@
 package legendOfZoe;
 
+
+
 public class Zoe extends Personnage{
 	
 	private boolean possedeHexa = false;
-	
-	private String nom = "Zoe";
+	private String nom;
+	private Point position;
 	private int HP = 100;
 	private int dmg = 50;
 	private int maxHp = 100;
 	private int nbVies = 5;
 	private boolean etatVie = true;
-	private boolean tour = true;
+	private int nbHexa = 0;
+	//private boolean tour;
 	
 	
 	
 
-	public Zoe (String nom, int HP, int dmg, int maxHp, int nbVies, boolean tour, boolean etatVie, boolean deplacementValide) {
-		super (nom, HP, dmg, maxHp, nbVies, tour, etatVie, deplacementValide);
+	public Zoe (Point point, String nom, boolean possedeHexa) {
+		super(point, nom);
+		this.position = point;
+		this.nom = nom;
 		
-		this.tour = true;
-		this.possedeHexa = false;
+		
+		//this.tour = true;
+		this.possedeHexa = possedeHexa;
+		
 	}
 	
 	public String getNom () {
@@ -27,11 +34,11 @@ public class Zoe extends Personnage{
 	}
 	
 	public void setNom(String nom) {
-		this.nom = "Zoe";
+		this.nom = nom;
 	}
 		
 	public int getHP() {
-		return super.HP;
+		return HP;
 	}
 	public void setHP(int HP) {
 		super.setHP(HP);
@@ -45,7 +52,7 @@ public class Zoe extends Personnage{
 	}
 	
 	public int getdmg() {
-		return super.dmg;
+		return dmg;
 	}
 	public void setDmg(int dmg) {
 		super.setDmg(dmg);	
@@ -76,14 +83,28 @@ public class Zoe extends Personnage{
 		super.setEtatVie(etatVie);
 	}
 	
+	public boolean peuxMonterNiveaux() {
+		return possedeHexa;
+	}
 	
+	public int getNbHexa() {
+		return nbHexa;
+	}
+	
+	public void setNbHexa(int nbHexa) {
+		this.nbHexa = nbHexa;
+	}
+	
+	public void incrementerNbHexa () {
+		setNbHexa(getNbHexa()+1);
+	}
 	
 	public boolean getPossedeHexa() {
 		return possedeHexa;
 	}
 	// Quand on commence un Niveaux. Possede Hexa est False
-	public static void setPossedeHexa(boolean possedeHexa ) {
-		this.possedeHexa = possedeHexa;
+	public  void setPossedeHexa(boolean peuxMonterNiveaux ) {
+		this.possedeHexa = peuxMonterNiveaux;
 	}
 	
 	
@@ -101,6 +122,6 @@ public class Zoe extends Personnage{
 	
 	
 	
-	public void afficher() {
+public void afficher() {
 	}
 }

@@ -1,25 +1,28 @@
 package legendOfZoe;
 
+
+
 public abstract class Personnage {
-	protected String nom; 		// nom du personnage.
-	protected int HP;			// pourcentage de vie.
-	protected int maxHp;		// ourcentage maximal de vie
-	protected static int dmg; 			// pourcentage de dommages.
-	protected int nbVies; 		// nombres de vies. 
+	protected String 			nom; 		// nom du personnage.
+	protected int 				HP;			// pourcentage de vie.
+	protected int 				maxHp;		// ourcentage maximal de vie
+	protected int 				dmg; 	// pourcentage de dommages.
+	protected int 				nbVies; 		// nombres de vies. 
+	protected boolean 			tour; 	// Boolean qui determine si c'est le tour du personnage.
+	protected boolean		 	etatVie; 	// Boolean qui determine si le personnage est vivant ou non vivant.
+	protected boolean 			deplacementValide; // Boolean pour defenir si un deplacement est valide ou invalide.
+	protected Point 			position;
 	
-	protected boolean tour; 	// Boolean qui determine si c'est le tour du personnage.
-	protected static boolean etatVie; 	// Boolean qui determine si le personnage est vivant ou non vivant.
-	protected boolean deplacementValide; // Boolean pour defenir si un deplacement est valide ou invalide.
-	
-	public Personnage (int HP, int dmg,int maxHp, int nbVies) {
+	public Personnage (Point point, String nom) {
 		
 		this.nom = nom;
-		this.HP  = HP;
-		this.dmg = dmg;
-		this.maxHp = maxHp;
-		this.nbVies = nbVies;
-		this.tour = tour;
-		this.etatVie = etatVie;
+		
+		//this.HP  = HP;
+		//this.dmg = dmg;
+		//this.maxHp = maxHp;
+		//this.nbVies = nbVies;
+		//this.tour = tour;
+		//this.etatVie = etatVie;
 		
 	}
 	
@@ -39,7 +42,12 @@ public abstract class Personnage {
 	public int getNbVies() {
 		return nbVies;
 	}
-	
+	public Point getPosition() {
+		return position;
+	}
+	public void setPosition(Point position) {
+		this.position = position;
+	}
 	public boolean getTour() {
 		return tour;
 	}
@@ -55,6 +63,7 @@ public abstract class Personnage {
 	public void setNbVies (int nbVies) {
 		this.nbVies = nbVies;
 		}
+	
 	//Setter pour HP
 	public void setHP(int HP) {
 		if (HP <0) { // Dans le cas ou HP descends en bas de 0;
@@ -63,9 +72,14 @@ public abstract class Personnage {
 			this.HP = HP;
 		}
 	}
+	
+	public void setMaxHp(int maxHp) {
+		this.HP = maxHp;
+	}
 	public void setEtatVie(boolean etatVie) {
 		this.etatVie = etatVie;
 	}
+	
 	
 	// Methode pour decrementer les HP lors d'une attaque 
 	public void attaquer (Personnage autre ) {
@@ -78,7 +92,7 @@ public abstract class Personnage {
 			setNbVies(getNbVies()-1);
 			this.HP = 100; //Personnage perds une vie et son pourcentage de vie "Reset"
 			if(this.nbVies == 0) {
-				this.etatVie = false;    // => TODO valider si c'est bon
+				setEtatVie(false);   
 			}
 			//  ==> TODO rajouter une facon de reset le nombre de HP apres decrementation de vie
 		}
